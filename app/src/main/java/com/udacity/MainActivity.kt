@@ -18,6 +18,7 @@ import com.udacity.notifications.createChannel
 import com.udacity.notifications.sendNotification
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
+import java.util.regex.Pattern
 
 
 class MainActivity : AppCompatActivity() {
@@ -36,8 +37,23 @@ class MainActivity : AppCompatActivity() {
             getString(R.string.notification_channel),
             application
         )
+        val urlPattern = Pattern.compile("https://.+?\\.com(/.+?)*?")
 
         registerReceiver(receiver, IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE))
+
+        radioGroupId.setOnCheckedChangeListener { group, checkedId ->
+            if(checkedId == R.id.customURLBtnId)
+                editTextURL.isClickable = true
+            else
+            {
+                editTextURL.isClickable = false
+                editTextURL.setText("")
+            }
+        }
+
+        instructions.setOnClickListener {
+            Toast.makeText(applicationContext,"starts with https:// and the web name ends with .com followed by the endpoints", Toast.LENGTH_LONG).show()
+        }
 
         custom_button.setOnClickListener {
             when(radioGroupId.checkedRadioButtonId){
@@ -52,6 +68,18 @@ class MainActivity : AppCompatActivity() {
                 R.id.retrofitBtnId ->{
                     selectedUri = RETROFIT_URL
                     notificationMessage = getString(R.string.retrofit_radio_text)
+                }
+                R.id.customURLBtnId -> {
+                    if(editTextURL.text.toString().isNotEmpty()
+                        && urlPattern.matcher(editTextURL.text.toString()).matches())
+                    {
+                        selectedUri = editTextURL.text.toString()
+                        notificationMessage = "Custom URL"
+                    }
+                    else {
+                        selectedUri = NONE_URL
+                        Toast.makeText(applicationContext,"Please enter a valid URL", Toast.LENGTH_SHORT).show()
+                    }
                 }
                 else -> {
                     selectedUri = NONE_URL

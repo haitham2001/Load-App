@@ -19,9 +19,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/radioGroupId"
-        app:layout_constraintVertical_bias="0.66" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -40,7 +38,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
-        app:layout_constraintBottom_toTopOf="@+id/custom_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView">
@@ -49,29 +46,81 @@
             android:id="@+id/glideBtnId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/white"
             android:layout_marginTop="16dp"
-            android:textSize="20sp"
-            android:text="@string/glide_radio_text" />
+            android:text="@string/glide_radio_text"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
 
         <RadioButton
             android:id="@+id/loadAppBtnId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/white"
             android:layout_marginTop="16dp"
-            android:textSize="20sp"
-            android:text="@string/load_app_radio_text" />
+            android:text="@string/load_app_radio_text"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
 
         <RadioButton
             android:id="@+id/retrofitBtnId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/white"
             android:layout_marginTop="16dp"
-            android:textSize="20sp"
             android:layout_marginBottom="16dp"
-            android:text="@string/retrofit_radio_text" />
+            android:text="@string/retrofit_radio_text"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <RadioButton
+            android:id="@+id/customURLBtnId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/custom_url"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
     </RadioGroup>
+
+    <EditText
+        android:id="@+id/editTextURL"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:background="@color/white"
+        android:backgroundTint="@color/white"
+        android:hint="@string/edit_field_text"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroupId" />
+
+    <LinearLayout
+        android:id="@+id/instructions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/custom_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextURL">
+
+        <TextView
+            android:id="@+id/urlInstructionsTextView"
+            android:layout_width="wrap_content"
+            android:textColor="@color/white"
+            android:layout_height="wrap_content"
+            android:text="@string/valid_url_text" />
+
+        <ImageView
+            android:id="@+id/questionMarkIcon"
+            android:layout_width="16dp"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/white"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/toppng_com_question_mark_icon_png_648x980" />
+
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

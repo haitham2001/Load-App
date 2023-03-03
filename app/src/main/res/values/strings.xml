@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ND940C3-Project</string>
+    <string name="app_name">Load App</string>
     <string name="app_description">Download files from Internet</string>
     <string name="action_settings">Settings</string>
 
@@ -23,4 +23,7 @@
     <string name="loading_btn">Loading</string>
     <string name="success_status">success</string>
     <string name="failed_status">failed</string>
+    <string name="edit_field_text">Want to download something else? Paste the link here</string>
+    <string name="custom_url">Custom URL</string>
+    <string name="valid_url_text">What is a valid URL?</string>
 </resources>
